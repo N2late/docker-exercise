@@ -1,0 +1,17 @@
+FROM node:19-bullseye
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy app files
+COPY . .
+
+EXPOSE 8080
+
+CMD [ "npm", "run", "server" ]
